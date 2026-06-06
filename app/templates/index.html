@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employee Salary Prediction</title>
+    <link rel="stylesheet" 
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Employee Salary Prediction System</h1>
+
+    <form action="/predict" method="POST">
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <br><br>
+
+        <label>Gender:</label>
+        <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <br><br>
+
+        <label>Education Level:</label>
+        <select name="education">
+
+            <option>Bachelor's</option>
+            <option>Master's</option>
+            <option>PhD</option>
+
+        </select>
+
+        <br><br>
+
+
+        <label>Job Title:</label>
+        <input type="text" name="job" required>
+
+        <br><br>
+
+
+        <label>Years of Experience:</label>
+        <input type="number" 
+               step="0.1"
+               name="experience"
+               required>
+
+
+        <br><br>
+
+        <button type="submit">
+            Predict Salary
+        </button>
+
+    </form>
+<br>
+
+<h2>
+    {{ prediction_text }}
+</h2>
+
+</body>
+
+</html>
