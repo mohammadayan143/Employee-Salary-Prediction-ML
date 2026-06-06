@@ -9,21 +9,13 @@ app = Flask(__name__)
 
 # Load ML Model
 model = joblib.load(
-    os.path.join(
-        "..",
-        "models",
-        "salary_model.pkl"
-    )
+    "models/salary_model.pkl"
 )
 
 
 # Load Encoders
 encoders = joblib.load(
-    os.path.join(
-        "..",
-        "models",
-        "encoders.pkl"
-    )
+    "models/encoders.pkl"
 )
 
 
