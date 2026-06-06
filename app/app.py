@@ -7,17 +7,29 @@ import pandas as pd
 app = Flask(__name__)
 
 
-# Load ML Model
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
+)
+
+
 model = joblib.load(
-    "models/salary_model.pkl"
+    os.path.join(
+        BASE_DIR,
+        "models",
+        "salary_model.pkl"
+    )
 )
 
 
-# Load Encoders
 encoders = joblib.load(
-    "models/encoders.pkl"
+    os.path.join(
+        BASE_DIR,
+        "models",
+        "encoders.pkl"
+    )
 )
-
 
 
 # Home Page
