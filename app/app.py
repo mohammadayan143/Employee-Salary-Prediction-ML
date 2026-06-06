@@ -33,13 +33,14 @@ encoders = joblib.load(
 
 
 # Home Page
+
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
-
 # Prediction Route
+
 @app.route("/predict", methods=["POST"])
 def predict():
 
@@ -75,6 +76,31 @@ def predict():
     })
 
 
+    # Clean inputs
+
+    input_data["Gender"] = (
+        input_data["Gender"]
+        .str.strip()
+        .str.title()
+    )
+
+
+    input_data["Education Level"] = (
+        input_data["Education Level"]
+        .str.strip()
+    )
+
+
+    input_data["Job Title"] = (
+        input_data["Job Title"]
+        .str.strip()
+        .str.title()
+    )
+
+
+    print(input_data)
+
+
     # Convert text values into numbers
 
     for col in [
@@ -100,7 +126,6 @@ def predict():
         "index.html",
         prediction_text=f"Predicted Salary: ₹ {salary}"
     )
-
 
 
 if __name__ == "__main__":
