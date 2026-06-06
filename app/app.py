@@ -36,8 +36,16 @@ encoders = joblib.load(
 
 @app.route("/")
 def home():
-    return render_template("index.html")
 
+    jobs = [
+        job for job in encoders["Job Title"].classes_
+        if str(job) != "nan"
+    ]
+
+    return render_template(
+        "index.html",
+        jobs=jobs
+    )
 
 # Prediction Route
 
@@ -98,7 +106,6 @@ def predict():
     )
 
 
-    print(input_data)
 
 
     # Convert text values into numbers
@@ -121,12 +128,17 @@ def predict():
 
     salary = round(prediction[0], 2)
 
+    jobs = [
+        job for job in encoders["Job Title"].classes_
+        if str(job) != "nan"
+    ]
+
 
     return render_template(
         "index.html",
-        prediction_text=f"Predicted Salary: ₹ {salary}"
+        prediction_text=f"Predicted Salary: ₹ {salary}",
+        jobs=jobs
     )
-
 
 if __name__ == "__main__":
     app.run(debug=True)

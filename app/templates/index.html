@@ -74,15 +74,21 @@
 
 
 
+
             <label>Gender</label>
 
-            <select name="gender">
+            <select name="gender" required>
 
-                <option>Male</option>
+                <option value="Male">
+                    Male
+                </option>
 
-                <option>Female</option>
+                <option value="Female">
+                    Female
+                </option>
 
             </select>
+
 
 
 
@@ -90,14 +96,20 @@
             <label>Education Level</label>
 
 
-            <select name="education">
+            <select name="education" required>
 
 
-                <option>Bachelor's</option>
+                <option value="Bachelor's">
+                    Bachelor's
+                </option>
 
-                <option>Master's</option>
+                <option value="Master's">
+                    Master's
+                </option>
 
-                <option>PhD</option>
+                <option value="PhD">
+                    PhD
+                </option>
 
 
             </select>
@@ -105,14 +117,33 @@
 
 
 
+
             <label>Job Title</label>
 
 
-            <input
-            type="text"
-            name="job"
-            placeholder="Example: Data Scientist"
-            required>
+            <select name="job" required>
+
+
+                <option value="">
+                    Select Job Title
+                </option>
+
+
+                {% for job in jobs %}
+
+                <option value="{{ job }}">
+
+                    {{ job }}
+
+                </option>
+
+                {% endfor %}
+
+
+            </select>
+
+
+
 
 
 
@@ -130,6 +161,8 @@
 
 
 
+
+
             <button type="submit">
 
                 Predict Salary
@@ -138,6 +171,8 @@
 
 
         </form>
+
+
 
 
 
@@ -150,6 +185,7 @@
         </div>
 
         {% endif %}
+
 
 
 
